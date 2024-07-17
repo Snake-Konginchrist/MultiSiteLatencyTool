@@ -1,5 +1,6 @@
 const axios = require('axios');
 const dns = require('dns');
+require('dotenv').config();
 
 async function getIP(domain) {
     return new Promise((resolve, reject) => {
@@ -13,7 +14,8 @@ async function getIP(domain) {
     });
 }
 
-const IP2LOCATION_API_KEY = '8C6C2D493EC26F1B961CB24B0D3D9CDF'; // 请替换为你的IP2Location.io API密钥
+const IP2LOCATION_API_KEY = process.env.IP2LOCATION_API_KEY; // 请替换为你的IP2Location.io API密钥
+console.log(`IP2Location.io API Key: ${IP2LOCATION_API_KEY}`)
 
 // 从URL获取IP地址并进行地理定位
 async function getGeoLocation(url) {
